@@ -1,5 +1,6 @@
 function preload() {
     fontRegular = loadFont('scripts/assets/fonty.ttf');
+    //music = loadSound('assets/backgroundMusic.mp3');
 }
 
 function setup() {
@@ -32,6 +33,26 @@ var score;
 function draw() {
     clear();
     background(1);
+    if (score >= 80)
+    {
+        fill(color('red'));
+    }
+    else if (score >= 60)
+    {
+        fill(color('purple'));
+    }
+    else if (score >= 40)
+    {
+        fill(color('magenta'));
+    }
+    else if (score >= 20)
+    {
+        fill(color('blue'));
+    }
+    else
+    {
+        fill(color('green'));
+    }
 
     switch(scene) {
         //start screen
@@ -48,10 +69,15 @@ function draw() {
             player.velocity = -8;
             scene = 3;
             score = 0;
+            //music.setVolume(0.1);
+            //music.play();
             break;    
             
         //main game loop
         case 3:
+
+            //if (!music.isPlaying())
+            //    music.play();
             //pipe timing
             now = millis();
             if ((now - then) >= 1500)
@@ -102,6 +128,8 @@ function draw() {
 
         //end screen
         case 4:
+            //if (music.isPlaying() == true)
+            //    music.stop();
             text("Score: " + score.toString(), 100, 100);
             text("Press space to try again", 100, 200);
             break;
