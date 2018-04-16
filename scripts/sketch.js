@@ -39,7 +39,7 @@ function draw() {
     }
     else if (score >= 60)
     {
-        fill(color('purple'));
+        fill(color('cyan'));
     }
     else if (score >= 40)
     {
