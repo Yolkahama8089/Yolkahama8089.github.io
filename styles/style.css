@@ -1,0 +1,46 @@
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+    background-color: rgb(33, 56, 56);
+}
+
+#navBar {
+    list-style-type: none;
+    margin: 0; 
+    padding: 0;
+    background-color: darkslategray;
+    overflow: hidden;
+}
+
+#navBar li {
+    float: left;
+}
+
+#navBar li a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    padding: 20px 20px;
+}
+
+#navBar li a.active {
+    color: black;
+    background-color: gray;
+}
+
+#navBar li a:hover:not(.active) {
+    color: lightgray;
+    background-color: rgb(33, 56, 56);
+}
+
+
+#rightBar {
+    float: right;
+    height: 1200px;
+    width: calc(12% - 10px);
+    max-width: 100px;
+    background-color: rgba(29, 68, 59, 0.815);
+}

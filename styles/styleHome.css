@@ -1,0 +1,67 @@
+#dog {
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    overflow: hidden;
+    width: calc(33% - 10px);
+    height: auto;
+    max-width: 300px;
+}
+
+#mainTextDiv {
+    border: ridge 5px rgba(148, 222, 243, 0.212);
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    overflow: auto;
+    width: calc(55% - 20px);
+    height: auto;
+    background-color: rgba(128, 128, 128, 0.507);
+}
+
+#mainTextBanner {
+    background-color: rgba(34, 44, 182, 0.384);
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 60px;
+    text-decoration: underline;
+    color: rgba(180, 179, 179, 0.836);
+    padding: 15px;
+}
+
+#mainTextBodyOne {
+    padding: 20px;
+    font-size: 18px;
+    color: rgba(180, 179, 179, 0.836);
+}
+
+div.dropdownContent {
+    position: absolute;
+    display: none;
+    text-align: center;
+    background-color: rgba(128, 128, 128, 0.685);
+    width: 200px;
+}
+
+div.dropdownContent ul {
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+div.dropdownContent ul li {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+div.dropdownContent ul li a {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+li.dropdownControl:hover div.dropdownContent {
+    display: block;
+}
