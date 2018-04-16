@@ -35,33 +35,3 @@
     color: rgba(180, 179, 179, 0.836);
 }
 
-div.dropdownContent {
-    position: absolute;
-    display: none;
-    text-align: center;
-    background-color: rgba(128, 128, 128, 0.685);
-    width: 200px;
-}
-
-div.dropdownContent ul {
-    width: 100%;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-div.dropdownContent ul li {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-}
-
-div.dropdownContent ul li a {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-}
-
-li.dropdownControl:hover div.dropdownContent {
-    display: block;
-}
