@@ -42,12 +42,7 @@ function draw() {
     {
         backgroundColor += 1;
     }
-    if (colorSwitcher === 1)
-    {
-        backgroundColor -= 1;
-        if (backgroundColor <= 1)
-            colorSwitcher = 0;
-    }
+    
 
     
 
