@@ -1,44 +1,36 @@
-function setup() {
-    createCanvas(800, 500);
-    fill(color('green'));
-    background(1);
-    frameRate(60);
-}
-
-var particleSets = [];
-
-var mouseLimiter = 0;
-
-function mousePressed()
-{
-    if (mouseLimiter === 0 && mouseX >= 0 && mouseX <= 800 && mouseY >= 0 && mouseY <= 500)
-    {
-        particleSets.push(new particleSet(mouseX, mouseY));
-        mouseLimiter = 1;
-    }
-    if (clicked === false)
-    {
-        clicked = true;
-    }
-}
-
-function mouseReleased()
-{
-    mouseLimiter = 0;
-}
+//variables controlling startup text and startup background
 var backgroundColor = 1;
 var backgroundColorShifter = 1;
 var clicked = false;
+
+//array of particle sets that expands on mouse click
+var particleSets = [];
+
+//keeps particles from generating continuously on mouse hold
+var mouseLimiter = 0;
+
+//Setup Function
+function setup() {
+    createCanvas(800, 500);
+    frameRate(60);
+}
+
+//Main Loop Function
 function draw() {
     
+    //clear previous frame
     clear();
     background(backgroundColor);
+
+    //startup text
     if (clicked === false)
     {
         fill(color('black'));
         textSize(32);
         text('try clicking', 100, 100);
     }
+
+    //controls background color changing on startup
     if(backgroundColorShifter > 0)
     {
         backgroundColor += backgroundColorShifter;
@@ -48,14 +40,11 @@ function draw() {
         }
     }
     
-
-    
-
     //handle each of the particlsets
     for(i=0; i<particleSets.length; i++)
     {
-        particleSets[i].tick(); //this line of code is executed just fine
-        particleSets[i].render(); //This is where the non-sensical error shows up
+        particleSets[i].tick();                 //adjusts positioning
+        particleSets[i].render();               //displays particle on screen via ellipse
         if (particleSets[i].checkDeath())
         {
             particleSets.splice(i, 1);
@@ -63,9 +52,33 @@ function draw() {
     }
 }
 
-//Class containing information and methods of each particle
+//On Mouse Click Function
+function mousePressed()
+{
+    //if the mouse is within bounds and isn't behing held (mouseLimiter checks if mouse is being held)
+    if (mouseLimiter === 0 && mouseX >= 0 && mouseX <= 800 && mouseY >= 0 && mouseY <= 500)
+    {
+        particleSets.push(new particleSet(mouseX, mouseY));
+        mouseLimiter = 1;
+    }
+
+    //clicked controls the display of the starting text.
+    if (clicked === false)
+    {
+        clicked = true;
+    }
+}
+
+//On Mouse Release Function
+function mouseReleased()
+{
+    mouseLimiter = 0;
+}
+
+//Particle Class Constructor
 var particle = function(x, y)
 {
+    //handles starting position and velocity
     this.x = x;
     this.y = y;
     this.velX = random() * 2;
@@ -73,50 +86,56 @@ var particle = function(x, y)
         this.velX *= -1;
     this.velY = random() * -5;
 
-    this.tick = function(){
+    //method for handling movement
+    this.tick = function()
+    {
         this.x += this.velX;
         this.y += this.velY;
         this.velY += .15;
     }
 
-    this.render = function(kolor){
-        fill(color(kolor));
+    //method for displaying particle
+    this.render = function(particleColor){
+        fill(color(particleColor));
         ellipse (this.x, this.y, 10, 10);
     }
 
 }
 
-//Class containing array of particles and handles all their ticking and rendering
+//Particle Set Class Constructor
 var particleSet = function(x, y)
 {
-    this.kolor;
-    this.randomColorSelector = random();
-    if (this.randomColorSelector < .2)
+    //handles determining color of each particle in the set
+    this.particleColor;
+    var randomColorSelector = random();
+    if (randomColorSelector < .2)
     {
-        this.kolor = 'green';
+        this.particleColor = 'green';
     }
-    else if (this.randomColorSelector < .4)
+    else if (randomColorSelector < .4)
     {
-        this.kolor = 'red';
+        this.particleColor = 'red';
     }
-    else if (this.randomColorSelector < .6)
+    else if (randomColorSelector < .6)
     {
-        this.kolor = 'cyan';
+        this.particleColor = 'cyan';
     }
-    else if (this.randomColorSelector < .8)
+    else if (randomColorSelector < .8)
     {
-        this.kolor = 'magenta';
+        this.particleColor = 'magenta';
     }
     else{
-        this.kolor = 'orange';
+        this.particleColor = 'orange';
     }
 
+    //array containing 20 particles
     this.particles = [];
     for (z=0; z<20; z++)
     {
         this.particles.push(new particle(x, y));
     }
 
+    //method handling the particles movement
     this.tick = function()
     {
         for(j=0; j<20; j++)
@@ -125,14 +144,16 @@ var particleSet = function(x, y)
         }
     }
 
+    //method handling displaying of particles
     this.render = function()
     {
         for(k=0; k<20; k++)
         {
-            this.particles[k].render(this.kolor);
+            this.particles[k].render(this.particleColor);
         }
     }
 
+    //method for deleting particle sets that have all particles below the canvas
     this.checkDeath = function()
     {
         var count = 0;
@@ -144,13 +165,13 @@ var particleSet = function(x, y)
             }
         }
             
-            if (count === 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+        if (count === 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
