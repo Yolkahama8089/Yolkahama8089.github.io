@@ -27,7 +27,6 @@ function mouseReleased()
     mouseLimiter = 0;
 }
 var backgroundColor = 1;
-var colorSwitcher = 0;
 var clicked = false;
 function draw() {
     
@@ -39,11 +38,9 @@ function draw() {
         textSize(32);
         text('try clicking', 100, 100);
     }
-    if (colorSwitcher === 0)
+    if(backgroundColor <= 120)
     {
         backgroundColor += 1;
-        if (backgroundColor >= 150)
-            colorSwitcher = 1;
     }
     if (colorSwitcher === 1)
     {
