@@ -90,19 +90,20 @@ var particle = function(x, y)
 var particleSet = function(x, y)
 {
     this.kolor;
-    if (random() < .2)
+    this.randomColorSelector = random();
+    if (randomColorSelector < .2)
     {
         this.kolor = 'green';
     }
-    else if (random() < .4)
+    else if (randomColorSelector < .4)
     {
         this.kolor = 'red';
     }
-    else if (random() < .6)
+    else if (randomColorSelector < .6)
     {
         this.kolor = 'cyan';
     }
-    else if (random() < .8)
+    else if (randomColorSelector < .8)
     {
         this.kolor = 'magenta';
     }
