@@ -1,0 +1,43 @@
+<!--
+    name: Michael Woodruff
+    pawprint: mrwwf4
+    date: 09/22/2018
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>
+        code editor
+    </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="Mrwwf4CodeEditor.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
+    <script src="Mrwwf4CodeEditor.js"></script>
+</head>
+
+<body onload="onLoad()">
+    <h1 id="title_header" ondblclick="changeTitle()">code editor</h1>
+
+    <div id="code_editor_container">
+        <textarea rows="16" cols="47" placeholder="HTML" id="html_editor" class="code_editor" ondblclick="onDbClickHTML()"></textarea>
+
+        <textarea rows="16" cols="47" placeholder="CSS" id="css_editor" class="code_editor" ondblclick="onDbClickCSS()" onkeydown="tab()"></textarea>
+
+        <div id="button_container">
+            <button onclick="onLaunch()">Launch</button>
+            <button id="toggle_button" onclick="onToggle()">Toggle</button>
+            <button onclick="reset()">Reset</button>
+        </div>
+
+    </div>
+
+    <div id="iframe_container">
+        <iframe id="iframe"></iframe>
+    </div>
+    <h2>Michael Woodruff</h2>
+</body>
+
+</html>
