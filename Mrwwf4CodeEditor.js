@@ -15,6 +15,8 @@ var onLoad = function() {
     header1 = document.getElementById('title_header');
     toggleButton = document.getElementById('toggle_button');
     isToggled = false;
+
+    
 }
 
 var onLaunch = function () {
